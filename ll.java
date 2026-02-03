@@ -27,6 +27,35 @@ static void add_at_index(int value, node h, int i){
     temp.next=n;
  
 }
+
+static node deleteatbegining(node head){
+    if(head==null){
+        System.out.println("LL is empty");
+    }
+     head = head.next;
+     return head;
+
+}
+
+static node deleteatending(node head){
+node temp=head;
+    while(temp.next.next!=null){
+    temp=temp.next;
+}
+temp.next=null;
+return head;
+}
+
+static node deleteatparticularindex(node head, int index){
+    node temp=head;
+    int count=0;
+while(count < index-1 && temp.next!=null){
+    temp=temp.next;
+    count++;
+}
+temp.next=temp.next.next;
+return head;
+} 
     public static void main(String[] args) {
         node head= new node(1);
         head.next= new node(2);
@@ -66,6 +95,32 @@ static void add_at_index(int value, node h, int i){
     while(j!=null){
             System.out.println(j.data);
             j=j.next;
+        }
+
+
+
+        head=deleteatbegining(head);
+        System.out.println("deleting at beggining");
+        node k= head;
+        while(k!=null){
+            System.out.println(k.data);
+            k=k.next;
+        }
+
+        head=deleteatending(head);
+        System.out.println("after deleting last node");
+        node s= head;
+        while(s!=null){
+            System.out.println(s.data);
+            s=s.next;
+        }
+
+        head=deleteatparticularindex(head, 1);
+        System.out.println("after deleting at particular index");
+        node b=head;
+        while(b!=null){
+            System.out.println(b.data);
+            b=b.next;
         }
     }
     
